@@ -13,3 +13,6 @@ I woke up qith a *Hard Penor*
 *** IMAGE FUCK
 
 ![This is an Evil Skeleton. twisted and fucked up creature](https://live.staticflickr.com/1430/1357709945_c78ccfbbe9_c.jpg)
+
+### check out my Five nights at freddies [Journal Enty 1](/journal/Chapter1.md)
+
