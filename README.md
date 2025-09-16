@@ -16,3 +16,6 @@ This is a certified link #MOMENT ->{to the Hype Moments and Aura}(https://www.go
 
 ### check out my Five nights at freddies [Journal Entry 1](/journal/Chapter1.md)
 
+[Character/scene Randomizer]{excercises/characterRandomizer/index.html}
+##Sonic Album CUstomizer/
+feel free to Check out this randomizer
