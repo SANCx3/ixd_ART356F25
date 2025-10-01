@@ -21,3 +21,7 @@ This is a certified link #MOMENT ->{to the Hype Moments and Aura}(https://www.go
 ## Sonic Album CUstomizer
 
 feel free to Check out this randomizer
+
+[projectone/Music Shuffler](projectone/MusicShuffler/index.html)
+
+## Project One Music Randomizer
