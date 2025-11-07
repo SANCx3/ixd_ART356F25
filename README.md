@@ -25,3 +25,7 @@ feel free to Check out this randomizer
 ## Project One Music Randomizer
 
 [MusicShuffler](MusicShuffler/index.html)
+
+## Project Two Data Visualizer
+[Puyo Puyo Character Exhibit](Project2/index.html)
+
