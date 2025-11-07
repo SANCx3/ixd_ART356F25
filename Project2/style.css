@@ -1,0 +1,20 @@
+html, body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    margin: 20;
+  padding: 20;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: brown;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  
+  background-image: url(puyo.jpg);
+  align-items: center;  
+  justify-content: center;
+}
+
