@@ -1,1 +1,4 @@
 
+In this part of chapter 5 of the Design of everyday thing, we are focused on bad design. Many tend ot attribute failure as self inflicted, when in most cases failure is and should be treated as bad design. the logical solution to bad design is to examine why the errors exist. in order to  get to the bottom of such questions, first ther must be an analysis of the root cause. 
+
+Many people tend to overlook what exactly causes the issues that they face, either through frustration or simply nodding off when asked a question, or forgetting to turn a stove burner off. Don norman even mentioned talking to other designers and administrators about such ordeals, such as nodding off while working. I can recall the amount of times I and many others in my circle have forgotten something that is small that also tends to be rather significant.
