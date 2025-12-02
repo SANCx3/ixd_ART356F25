@@ -1,132 +1,143 @@
+let player, groundSensor, ground, platforms, jumpEffect, walkEffect;
+
+let data;
+let characters;
+let puyopuyoID = 0;
+
 let image_filelist = [
-  "album/album1.png",
-  "album/album2.png",
-  "album/album3.png",
-  "album/album4.jpg",
-  "album/album5.jpg",
-  "album/album6.jpg",
-  "album/album7.png",
-  "album/album8.png",
-  "album/album9.png",
-  "album/album10.png",
-  "album/album11.png",
-  "album/album12.png",
-  "album/album13.png",
-  "album/album14.png",
-  "album/album15.png",
-  "album/album16.png",
-  "album/album17.png",
-  "album/album18.png",
-  "album/album19.png",
-  "album/album20.png",
-  "album/album21.png",
-  "album/album22.png",
-  "album/album23.png",
-  "album/albumpac.png",
-];
+   'puyopuyo/ally.webp'
+  ,'puyopuyo/Amitie_Puyo_Puyo_art.webp'
+  ,'puyopuyo/Arle_Nadja.webp'
+  ,'puyopuyo/draco.webp'
+  ,'puyopuyo/Liddelle.webp'
+  ,'puyopuyo/Rulue.webp'
+  ,'puyopuyo/sig.webp'
+  ,'puyopuyo/satan.webp'
+]
 let imagelist = [];
-let current_image = 1;
-let audio_filelist = [
-  "audio/coral.mp3",
-  "audio/snow.mp3",
-  "audio/date.mp3",
-  "audio/Ghosttbusters.mp3",
-  "audio/Ghastbasters .mp3",
-  "audio/aqua.mp3",
-  "audio/PacMansPark.mp3",
-  "audio/Biollante.mp3",
-  "audio/MENU.mp3",
-  "audio/Esperanto.mp3",
-  "audio/Sista.mp3",
-  "audio/Ghostbusters Afterlife.mp3",
-  "audio/Almost Dead.mp3",
-  "audio/I Shoulda Known!!.mp3",
-  "audio/Bamboo.mp3",
-  "audio/ルパン三世80.mp3",
-  "audio/Ghostbusterz.mp3",
-  "audio/Gostbostr.mp3",
-  "audio/Tokyo Speedrun.mp3",
-  "audio/Beat Him.mp3",
-  "audio/cannonball.mp3",
-  "audio/Ska Cha Cha.mp3",
-  "audio/Naked Glow.mp3",
-  "audio/Eatem UP.mp3",
-];
-let audiolist = [];
-let nowPlaying;
-let status = 0;
-let slider;
+let current_image = 1; 
+
+let col = 255;
+let x, y;
+
 
 function preload() {
-  soundFormats("mp3");
+  data = loadJSON("characters.json");
 
-  for (let filename of image_filelist) {
+    for (let filename of image_filelist) {
     imagelist.push(loadImage(filename));
   }
 
-  for (let filename of audio_filelist) {
-    audiolist.push(loadSound(filename));
-  }
+  meuseum = loadImage('Illustration40.png')
+
+  floor= loadImage('floor.png')
 }
 
 function setup() {
-  createCanvas(500, 500);
-
+  createCanvas(1000, 500);
+    noFill();
   strokeWeight(4);
-  nowPlaying = audiolist[current_image];
+
+  	
+  world.gravity.y = 11;
+  allSprites.pixelPerfect = true;
+
+  player = new Sprite();
+  player.x = 100;
+  player.y = 100;
+  player.rotationLock = true;
+  player.friction = 0
+
+
+    platform = new Sprite();
+  platform.width = 1000;
+  platform.height = 100;
+  platform.image = 'floor.png';
+  platform.x = 500;
+  platform.y = 450;
+  platform.collider = "static";
+
+  groundSensor = new Sprite(100, 100);
+	groundSensor.removeColliders();
+	groundSensor.visible = false;
+	groundSensor.mass = 0.01;
+	
+	let j = new GlueJoint(player, groundSensor);
+	j.visible = false;
+
+    x = 200; 
+  y =355;
+  // console.log(data.data[0].gender);
+  console.log(data.data.length);
 }
 
 function draw() {
-  background(174, 252, 242);
-  if (mouseIsPressed) {
-    ellipse(mouseX, mouseY, 10);
-    stroke(random(255), random(132), random(245));
-    fill(random(255), random(132), random(245));
-  }
-  image(imagelist[current_image], 80, 20, 350, 350);
-  //controls
-  if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)) {
-    next();
-  }
-  if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) {
-    prev();
-  }
-  if (keyIsDown(87) || keyIsDown(UP_ARROW)) {
-    shuffleAlbum();
-  }
-  if (keyIsDown(83) || keyIsDown(DOWN_ARROW)) {
-    playAudio();
-  }
+  background(0);
+
+
+  let name = data.data[puyopuyoID].name;
+  let nameJP = data.data[puyopuyoID].nameJP;
+  let unicode = data.data[puyopuyoID].unicode;
+  let latin = data.data[puyopuyoID].latin;
+  let gender = data.data[puyopuyoID].gender;
+  let alias = data.data[puyopuyoID].alias;
+  let description = data.data[puyopuyoID].description;
+  let firstAppear = data.data[puyopuyoID].firstAppear;
+  let lastAppear = data.data[puyopuyoID].lastAppear;
+
+  // for (let i = 0; i < data.data.length; i++) {
+  // console.log(description.length);
+  // }
+  
+  image(imagelist[current_image], 200, 20, 232, 472);
+
+
+  fill(19, 252, 3);
+  text(name, 430, 60);
+  text(nameJP, 430, 70);
+  text(unicode, 430, 80);
+  text(latin, 430, 90);
+  text(gender, 430, 110);
+  text(alias, 430, 130);
+  text(description, 430, 140, 280, 100);
+  text(firstAppear, 430, 230);
+  text(lastAppear, 430, 250);
+
+  
+  
+  if (kb.pressing("left")) player.vel.x = -5;
+  else if (kb.pressing("right")) player.vel.x = 5;
+  else player.vel.x = 0;
+    
+  if (player.vel.y == 0){
+  if (kb.presses("up")) player.vel.y = -7 ;
+	}
+
+	if (player.y > 800) {
+		player.speed = 0;
+		player.x = 48;
+		player.y = 100; 
+	}
+
+
+  image(meuseum,0,0,1000,500);
+
+
+
 }
+
 function next() {
   current_image = current_image + 1;
 
   if (current_image > imagelist.length - 1) {
     current_image = 0;
   }
+} 
 
-  nowPlaying.stop();
-  nowPlaying = audiolist[current_image];
-  nowPlaying.play();
-  print("next song is " + current_image);
-}
-function prev() {
-  current_image = current_image - 1;
-  if (current_image < 0) {
-    current_image = imagelist.length - 1;
-  }
-  nowPlaying.stop();
-  nowPlaying = audiolist[current_image];
-  nowPlaying.play();
-  print("previous song is " + current_image);
-}
-function playAudio() {
-  if (status == 0) {
-    nowPlaying.play();
-    status = 1;
-  } else {
-    status = 0;
-    nowPlaying.pause();
+function keyPressed() {
+  if (keyIsDown(32)) {
+    puyopuyoID++;
+    shufflePuyo();
   }
 }
-//code adapted from MP3player by Shaokang/didny
+
